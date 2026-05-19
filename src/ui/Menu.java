@@ -1,5 +1,7 @@
 package ui;
 import java.util.Scanner;
+import services.TaskService;
+
 public class Menu {
 
     private void menu(){
@@ -18,6 +20,14 @@ public class Menu {
     }
     public void start(){
         menu();
-        choise();
+        TaskService task = new TaskService();
+        switch (choise()) {
+            case 1 :
+                task.addTask();
+                break;
+            case 2 :
+                task.deleteTask();
+                break;
+        }
     }
 }
