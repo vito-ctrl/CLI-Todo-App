@@ -1,4 +1,5 @@
 package ui;
+
 import java.util.Scanner;
 import services.TaskService;
 
@@ -26,7 +27,7 @@ public class Menu {
                 task.addTask();
                 break;
             case 2 :
-                task.deleteTask();
+//                task.deleteTask();
                 break;
         }
     }
