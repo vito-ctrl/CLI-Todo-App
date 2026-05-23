@@ -1,8 +1,9 @@
 package services;
 
 import models.Task;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
+//import services.FileService;
 
 public class TaskService {
     public void addTask () {
@@ -13,6 +14,7 @@ public class TaskService {
         String title = scan.nextLine();
 
         Task task = new Task(title);
-        System.out.println(task.getTitle());
+        FileService file = new FileService();
+        file.store(task.getId(), task.getTitle(), task.getIsComplete(), task.getTime());
     }
 }
