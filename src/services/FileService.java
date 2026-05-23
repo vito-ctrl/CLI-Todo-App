@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 
 class FileService {
@@ -15,10 +16,12 @@ class FileService {
         String data = (id + "   " +
                 title + "   " +
                 isComplete + "   " +
-                createdAt);
+                createdAt + "\n");
 
         try {
-            Files.writeString(path, data);
+            Files.writeString(path, data,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
