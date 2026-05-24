@@ -8,10 +8,14 @@ import java.io.IOException;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 
-class FileService {
+import java.io.FileNotFoundException; // Import this class to handle errors
+import java.util.Scanner;
 
-    public void store (int id, String title, boolean isComplete, LocalDate createdAt) {
+public class FileService {
+
+    public void store (String title, boolean isComplete, LocalDate createdAt) {
         Path path  = Paths.get("/home/vito/java_projects/CLI-Todo-App/src/data/tasks.txt");
+        int id = getLastID(path) + 1;
 
         String data = (id + "   " +
                 title + "   " +
@@ -25,5 +29,20 @@ class FileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private int getLastID(Path path){
+        File myObj = new File(path.toUri());
+        char c = '1';
+        try (Scanner myReader = new Scanner(myObj)) {
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                c = data.charAt(0);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        int id = c - '0';
+        return id;
     }
 }

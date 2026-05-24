@@ -15,6 +15,6 @@ public class TaskService {
 
         Task task = new Task(title);
         FileService file = new FileService();
-        file.store(task.getId(), task.getTitle(), task.getIsComplete(), task.getTime());
+        file.store(task.getTitle(), task.getIsComplete(), task.getTime());
     }
 }

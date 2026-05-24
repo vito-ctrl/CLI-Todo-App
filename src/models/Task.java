@@ -3,7 +3,6 @@ package models;
 import java.time.LocalDate;
 
 public class Task {
-    private static int id = 0;
     private String title;
     private boolean isComplete;
     private LocalDate createdAt;
@@ -12,10 +11,6 @@ public class Task {
         this.title = t;
         this.isComplete = false;
         this.createdAt = LocalDate.now();
-    }
-
-    public int getId(){
-        return this.id;
     }
 
     public String getTitle() {
